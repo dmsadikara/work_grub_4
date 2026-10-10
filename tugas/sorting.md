@@ -107,7 +107,7 @@ elseif ($metode === "selection") {
             <th>Harga</th>
         </tr>
 
-        <?php foreach ($hasil as $i => &item): ?>
+        <?php foreach ($hasil as $i => $item): ?>
         <tr>
             <td><?= $i + 1 ?></td>
             <td><?= htmlspecialchars($item["kode"]) ?></td>
