@@ -32,14 +32,14 @@ if ($metode !== "" && $cari !== "") {
 
 // 3. Sequential Search: cek satu per satu dari awal
 if ($metode === "sequential") {
-  foreach ($barang as $item) {
-      $langkah++;
+    foreach ($barang as $item) {
+        $langkah++;
 
-      if (strcasecmp($item["nama"], $cari) == 0) {
-          $hasil = $item
-          break; // sudah ketemu, berarti
-      }
-  }
+        if (strcasecmp($item["nama"], $cari) == 0) {
+            $hasil = $item
+            break; // sudah ketemu, berarti
+        }
+    }
 }
 
 // 4. Binary Search: data harus urut dulu
