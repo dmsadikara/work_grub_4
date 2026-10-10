@@ -19,8 +19,15 @@ $barang = [
   ["kode" => "MPK-01", "nama" => "Map Kertas"]      "stok" => 25,  "harga" => 8000],
 ];
 
-// 2. Ambil pilihan algoritma dari form
+// 2. Ambil input dari form
 $metode = $_GET ["metode"] ?? "";
-$hasil = $barang;
+$cari   = $barang;
 
-//3. Bubble Sort
+$sudahcari = false;
+$hasil     = null;
+$langkah   = 0;
+
+if ($metode !== "" && $cari !== "") {
+    $sudahcari = true;
+
+// 3. Sequential Search: cek satu per satu dari awal
