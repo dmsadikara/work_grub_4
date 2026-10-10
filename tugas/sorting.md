@@ -90,6 +90,10 @@ elseif ($metode === "selection") {
                 <? $metode === "bubble" ? "selected" : "" ?>>
                 Bubble Sort
             </option>
+            <option value="selection"
+                <?= $metode === "selection" ? "selected" : "" ?>>
+                Selection Sort
+            </option>
         </select>
 
         <button type="submit">Urutkan</button>
