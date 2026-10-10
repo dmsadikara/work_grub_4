@@ -42,4 +42,9 @@ if ($metode == "bubble") {
     }
 }
 
+// 4. Selection Sort
+elseif ($metode === "selection") {
+    $n = count($hasil);
 
+    for ($i = 0; $i < $n - 1; $i++) {
+        
