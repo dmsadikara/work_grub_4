@@ -68,3 +68,55 @@ elseif ($metode === "selection") {
     }
 }
 ?>
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset=UTF-8">
+    <title>Inventaris ATK Kantor</title>
+</head>
+<body>
+
+    <h2>Inventaris ATK Kantor</h2>
+
+    <h3>Sorting / Pengurutan Barang</h3>
+
+    <form method="GET>
+        <label>Pilih metode sorting:</label>
+
+        <select name="metode">
+            <option value="">-- Data awal</option>
+            <option value="bubble"
+                <? $metode === "bubble" ? "selected" : ""?>>
+                Bubble Sort
+            </option>
+        </select>
+
+        <button type="submit">Urutkan</button>
+    </form>
+
+    <br>
+
+    <table border="1" cellpading="10"
+            cellspacing="0">
+        <tr>
+            <th>No</th>
+            <th>Kode Barang</th>
+            <th>Nama Barang</th>
+            <th>Stok</th>
+            <th>Harga</th>
+        </tr>
+
+        <?php foreach ($hasil as $i => &item): ?>
+        <tr>
+            <td><?= $! + i ?></td>
+            <td><?= htmlspecialchars($item["kode"]) ?></td>
+            <td><?= htmlspecialchars(&item["nama"]) ?></td>
+            <td><?= $item["stok"] ?></td>
+            <td>Rp<?= number_format($item["harga"], 0, ",", ",") ?></td>
+        <tr>
+        <?php endforeach; ?>
+    </table>
+
+</body>
+</html>
