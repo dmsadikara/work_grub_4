@@ -21,7 +21,7 @@ $barang = [
 ];
 
 // 2. Ambil pilihan algoritma dari form
-&metode = $_GET["metode"] ?? "";
+$metode = $_GET["metode"] ?? "";
 $hasil = $barang;
 
 // 3. Bubble Sort
