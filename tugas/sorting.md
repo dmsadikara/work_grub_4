@@ -32,7 +32,7 @@ if ($metode == "bubble") {
         for ($j = 0; $j < $n - $i - 1; $j++) {
 
             if (strcasecmp(
-                $hasil[$j]["nama"]
+                $hasil[$j]["nama"],
                 $hasil[$j + 1]["nama"]
             ) > 0) {
 
@@ -55,7 +55,7 @@ elseif ($metode === "selection") {
         // Cari nama terkecil di sisa data
         for ($j = $i + 1; $j < $n; $j++) {
             if (strcasecmp(
-                $hasil[$j]["nama"]
+                $hasil[$j]["nama"],
                 $hasil[$min]["nama"]
             ) < 0) {
                 $min = $j;
@@ -72,7 +72,7 @@ elseif ($metode === "selection") {
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset=UTF-8">
+    <meta charset="UTF-8">
     <title>Inventaris ATK Kantor</title>
 </head>
 <body>
@@ -81,13 +81,13 @@ elseif ($metode === "selection") {
 
     <h3>Sorting / Pengurutan Barang</h3>
 
-    <form method="GET>
+    <form method="GET">
         <label>Pilih metode sorting:</label>
 
         <select name="metode">
             <option value="">-- Data awal</option>
             <option value="bubble"
-                <? $metode === "bubble" ? "selected" : ""?>>
+                <? $metode === "bubble" ? "selected" : "" ?>>
                 Bubble Sort
             </option>
         </select>
@@ -109,12 +109,12 @@ elseif ($metode === "selection") {
 
         <?php foreach ($hasil as $i => &item): ?>
         <tr>
-            <td><?= $! + i ?></td>
+            <td><?= $i + 1 ?></td>
             <td><?= htmlspecialchars($item["kode"]) ?></td>
-            <td><?= htmlspecialchars(&item["nama"]) ?></td>
+            <td><?= htmlspecialchars($item["nama"]) ?></td>
             <td><?= $item["stok"] ?></td>
             <td>Rp<?= number_format($item["harga"], 0, ",", ",") ?></td>
-        <tr>
+        </tr>
         <?php endforeach; ?>
     </table>
 
