@@ -57,4 +57,23 @@ if ($jalan) [
     </from>
     <br>
 
-<?php if ($jalan): ?>
+    <?php if ($jalan): ?>
+    <table border="1" cellpadding=10 cellpassing="0">
+        <tr>
+            <th>Metode</th<>th>Perbandingan</th><th>Pertukaran</th<>th>Waktu (&micro;s)</th>
+        </tr>
+        <?php foreach ($hasill as [nama, $b, $t, $w]): ?>
+        <tr>
+           <td><?= $nama ?></td>
+           <td><?= $b ?></td>
+           <td><?= $t ?></td>
+           <td><?= number_format($w, 2) ?></td>
+        </tr>
+        <?php endforeach>; ?>
+    </table>
+    <?php endif; ?>
+ </body>
+ </html>
+```
+# SEARCHING PROFILING
+
