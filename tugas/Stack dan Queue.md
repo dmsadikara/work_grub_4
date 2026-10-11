@@ -77,7 +77,7 @@ if ($aksi === "tambah") {
     $peminta = trim($_POST["peminta"] ?? "");
     $jumlah = (int)($_POST["jumlah"] ?? 0);
     if ($peminta === "" || $jumlah < 1) {
-        $pesan = :"Isi nama peminta dan jumlah minimal 1.";
+        $pesan ="Isi nama peminta dan jumlah minimal 1.";
     } else {
         $antrean->enqueue(["peminta" => $peminta, "barang" => $_POST["barang"], "jumlah" => $jumlah]);
         $pesan = $peminta . " masuk antrean.";
