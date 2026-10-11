@@ -82,4 +82,24 @@ if ($aksi === "tambah") {
         $antrean->enqueue(["peminta" => $peminta, "barang" => $_POST["barang"], "jumlah" => $jumlah]);
         $pesan = $peminta . " masuk antrean.";
     }
+} elseif ($aksi === "layani") {
+    // Tombol "Layani": dequeue permintaan paling depan, kurangi stok, catat ke stack
+    $permintaan = $antrean->dequeue();
+    if ($permintaan === null) {
+        $pesan = "Antrean kosong.";
+    } else {
+        $pesan = "Barang '" . $permintaan["barang"] . "' tidak ditemukan.";
+        foreach ($barang as $i = $item) {
+            if (strcasecmp($item["nama], $permintaan["barang"]) == 0) {
+                if ($item["stok"] >= $permintaan["jumlah"]) {
+                    $barang[$i]["stok"] -= $permintaan["jumlah"];
+                    $riwayat->push($permintaan);
+                    $pesan = $permintaan["peminta"] . " dilayani: " . $permintaan["jumlah"] . " " . $item["nama"] . ".";
+                } else {
+                    $pesan = $permintaan["peminta"] . " ditolak: stok " . $item["nama"] . " hanya " . $item["stok"] . ".";
+                }
+            }
+        }
+    }
+
 
