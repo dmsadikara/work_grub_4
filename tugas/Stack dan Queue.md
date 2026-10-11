@@ -57,7 +57,7 @@ class Queue
     // dequeue: ambil dan buang item paling depan (yang pertana masuk)
     public function dequeue(): ?array { return array_shift($this->data); }
 
-    public function isEmpty(): bool { return count(this->data) === 0; }
+    public function isEmpty(): bool { return count($this->data) === 0; }
 
     public function toArray(): array { return $this->data; }
 }
@@ -77,7 +77,7 @@ if ($aksi === "tambah") {
     $peminta = trim($_POST["peminta"] ?? "");
     $jumlah = (int)($_POST["jumlah"] ?? 0);
     if ($peminta === "" || $jumlah < 1) {
-        $pesan = :Isi nama peminta dan jumlah minimal 1.";
+        $pesan = :"Isi nama peminta dan jumlah minimal 1.";
     } else {
         $antrean->enqueue(["peminta" => $peminta, "barang" => $_POST["barang"], "jumlah" => $jumlah]);
         $pesan = $peminta . " masuk antrean.";
@@ -89,8 +89,8 @@ if ($aksi === "tambah") {
         $pesan = "Antrean kosong.";
     } else {
         $pesan = "Barang '" . $permintaan["barang"] . "' tidak ditemukan.";
-        foreach ($barang as $i = $item) {
-            if (strcasecmp($item["nama], $permintaan["barang"]) == 0) {
+        foreach ($barang as $i => $item) {
+            if (strcasecmp($item["nama"], $permintaan["barang"]) == 0) {
                 if ($item["stok"] >= $permintaan["jumlah"]) {
                     $barang[$i]["stok"] -= $permintaan["jumlah"];
                     $riwayat->push($permintaan);
@@ -109,7 +109,7 @@ if ($aksi === "tambah") {
     } else {
         foreach ($barang as $i => $item) {
             if (strcasecmp($item["nama"], $terakhir["barang"]) == 0) {
-                $barang[$i]["stok"] += $terakhir["jumlah'];
+                $barang[$i]["stok"] += $terakhir["jumlah"];
             }
         }
         $pesan = "Dibatalkan: " . $terakhir["peminta"] . " minta " . $terakhir["jumlah"] . " " . $terakhir["barang"] . ". Stok dikembalikan.";
@@ -173,7 +173,7 @@ $_SESSION["riwayat"] = $riwayat->toArray();
     </form>
     <form method="POST">
         <input type="hidden" name="aksi" value="layani">
-        <button type=submit">Layani antrean paling depan</button>
+        <button type="submit">Layani antrean paling depan</button>
     </form>
     <p> Isi antrean (paling atas = paling depan):</p>
     <?php if ($antrean->isEmpty()): ?>
@@ -181,7 +181,7 @@ $_SESSION["riwayat"] = $riwayat->toArray();
     <?php else: ?>
         <ol>
             <?php foreach ($antrean->toArray() as $p): ?>
-                <li><?= h($p["peminta"]) ?> minta <?= $p["jumlah"] ?> <?= h($p[barang]) ?></li>
+                <li><?= h($p["peminta"]) ?> minta <?= $p["jumlah"] ?> <?= h($p["barang"]) ?></li>
             <?php endforeach; ?>
         </ol>
     <?php endif; ?>
@@ -191,7 +191,7 @@ $_SESSION["riwayat"] = $riwayat->toArray();
         <input type="hidden" name="aksi" value="undo">
         <button type="submit">Undo (batalkan pelayanan terakhir)</button>
     </form>
-    <p>Isi riwayat (paling atas = paling baru):</P>
+    <p>Isi riwayat (paling atas = paling baru):</p>
     <?php if ($riwayat->isEmpty()): ?>
         <p><i>Riwayat kosong.</i></p>
     <?php else: ?>
