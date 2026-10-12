@@ -36,7 +36,7 @@ if ($jalan) {
             if (strcasecmp($data[$j]["nama"], $data[$min]["nama"]) < 0) $min = $j;
         }
         if ($min != $i) {
-            [$data[$i], $data[$min]] = [$data[$min], $data[$i];
+            [$data[$i], $data[$min]] = [$data[$min], $data[$i]];
             $tukar++;
         }
     }
@@ -58,7 +58,7 @@ if ($jalan) {
     <br>
 
     <?php if ($jalan): ?>
-    <table border="1" cellpadding="10" cellpassing="0">
+    <table border="1" cellpadding="10" cellspacing="0">
         <tr>
             <th>Metode</th><th>Perbandingan</th><th>Pertukaran</th><th>Waktu (&micro;s)</th>
         </tr>
