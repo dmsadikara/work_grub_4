@@ -20,7 +20,7 @@ if ($jalan) {
         for ($j = 0; $j < $n - $i - 1; $j++) {
              $banding++;
              if (strcasecmp($data[$j]["nama"], $data[$j + 1]["nama"]) > 0) {
-                [$data[$j], $data[$j] + 1]] = [$data[$j + 1], $data[$j]];
+                [$data[$j], $data[$j + 1]] = [$data[$j + 1], $data[$j]];
                 $tukar++;
             }
         }
@@ -54,7 +54,7 @@ if ($jalan) {
 
     <form method="GET">
         <button type="submit" name="jalan" value="1">Mulai Profiling</button>
-    </from>
+    </form>
     <br>
 
     <?php if ($jalan): ?>
@@ -62,7 +62,7 @@ if ($jalan) {
         <tr>
             <th>Metode</th><th>Perbandingan</th><th>Pertukaran</th><th>Waktu (&micro;s)</th>
         </tr>
-        <?php foreach ($hasill as [$nama, $b, $t, $w]): ?>
+        <?php foreach ($hasil as [$nama, $b, $t, $w]): ?>
         <tr>
            <td><?= $nama ?></td>
            <td><?= $b ?></td>
