@@ -21,7 +21,7 @@ $barang = [
 
 // 2. Ambil input dari form
 $metode = $_GET ["metode"] ?? "";
-$cari   = trims($_GET["cari"] ?? "");
+$cari   = trim($_GET["cari"] ?? "");
 
 $sudahCari = false;  // penanda: pencarian sudah dijalankan atau belum
 $hasil     = null;   // menyimpan barang yang ketemu (null = belum ada)
