@@ -53,7 +53,7 @@ if ($metode !== "" && $cari !== "") {
         while ($kiri <= $kanan) {
             $langkah++;
 
-            $tengah  = intdiv($kiri + kanan, 2);
+            $tengah  = intdiv($kiri + $kanan, 2);
             $banding = strcasecmp($data[$tengah]["nama"], $cari);
 
             if ($banding == 0) {
