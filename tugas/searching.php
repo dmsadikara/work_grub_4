@@ -36,7 +36,7 @@ if ($metode !== "" && $cari !== "") {
             $langkah++;
 
             if (strcasecmp($item["nama"], $cari) == 0) {
-                $hasil = $item
+                $hasil = $item;
                 break;  // sudah ketemu, berhenti
             }
         }
