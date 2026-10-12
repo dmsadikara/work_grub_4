@@ -77,13 +77,12 @@ if ($jalan) {
 ```
 # Searching Profiling
 ```
-<php
-
+<?php
 $barang = [
     ["kode" => "PNS-01", "nama" => "Pensil 2B",     "stok" => 120, "harga" => 3500],
     ["kode" => "SPD-01", "nama" => "Spidol Hitam",  "stok" => 80, "harga" => 4000],
     ["kode" => "PNG-01", "nama" => "Penghapus",     "stok" => 60, "harga" => 2500],
-    ["kode" => "KRT-01", "nama" => "Kertas HVS A4", "stok" => 25, "harga" => 52000]
+    ["kode" => "KRT-01", "nama" => "Kertas HVS A4", "stok" => 25, "harga" => 52000],
     ["kode" => "KRT-02", "nama" => "Kertas Folio",  "stok" => 45, "harga" => 38000],
     ["kode" => "STP-01", "nama" => "Stapler",       "stok" => 15, "harga" => 18000],
     ["kode" => "SLT-01", "nama" => "Selotip",       "stok" => 30, "harga" => 5000],
@@ -96,16 +95,16 @@ $cari = trim($_GET["cari"] ?? "");
 
 if ($cari !== "") {
 
-   / / Sequential Search
+   // Sequential Search
    $mulai = hrtime(true);
    $langkahSeq = 0;
    $ketemu = false;
 
    foreach ($barang as $item) {
-       $langkahSeq++
+       $langkahSeq++;
        if (strcasecmp($item["nama"], $cari) == 0) {
            $ketemu = true;
-           $break;
+           break;
        }
    }
    $waktuSeq = (hrtime(true) - $mulai) / 1000; // mikrodetik
@@ -128,7 +127,7 @@ if ($cari !== "") {
             break;
         } elseif ($banding < 0) {
             $kiri = $tengah + 1;
-        } else {
+        } else }
             $kanan = $tengah - 1;
         {
     }
@@ -155,7 +154,7 @@ if ($cari !== "") {
     <?php if ($cari !== ""): ?>
         <p><?= $ketemu ? "Barang ditemukan." : "Barang tidak ditemukan." ?></p>
 
-        <table border="1" cellpading="10" cellspacing="0">
+        <table border="1" cellpadding="10" cellspacing="0">
             <tr>
                 <th>Metode</th>
                 <th>Langkah</th>
@@ -164,12 +163,12 @@ if ($cari !== "") {
             <tr>
                 <td>Sequential Search</td>
                 <td><?= $langkahSeq ?></td>
-                <td><?= number_format($waktuSeq, 2)
+                <td><?= number_format($waktuSeq, 2) ?>
             </tr>
             <tr>
                 <td>Binary Search (+ sorting)</td>
                 <td><?= $langkahBin ?></td>
-                <td><?= number_format($waktuBin, 2)
+                <td><?= number_format($waktuBin, 2) ?>
             </tr>
         </table>
     <?php endif; ?>
