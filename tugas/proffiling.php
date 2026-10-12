@@ -127,9 +127,9 @@ if ($cari !== "") {
             break;
         } elseif ($banding < 0) {
             $kiri = $tengah + 1;
-        } else }
+        } else {
             $kanan = $tengah - 1;
-        {
+        }
     }
     $waktuBin = (hrtime(true) - $mulai) / 1000; // mikrodetik
 }
@@ -163,12 +163,12 @@ if ($cari !== "") {
             <tr>
                 <td>Sequential Search</td>
                 <td><?= $langkahSeq ?></td>
-                <td><?= number_format($waktuSeq, 2) ?>
+                <td><?= number_format($waktuSeq, 2) ?></td>
             </tr>
             <tr>
                 <td>Binary Search (+ sorting)</td>
                 <td><?= $langkahBin ?></td>
-                <td><?= number_format($waktuBin, 2) ?>
+                <td><?= number_format($waktuBin, 2) ?></td>
             </tr>
         </table>
     <?php endif; ?>
