@@ -21,14 +21,14 @@ $barang = [
 
 // 2. Ambil input dari form
 $metode = $_GET ["metode"] ?? "";
-$cari   = $barang;
+$cari   = trims($_GET["cari"] ?? "");
 
-$sudahcari = false;
-$hasil     = null;
-$langkah   = 0;
+$sudahCari = false;  // penanda: pencarian sudah dijalankan atau belum
+$hasil     = null;   // menyimpan barang yang ketemu (null = belum ada)
+$langkah   = 0;      // menghitung berapa kali pengecekan dilakukan
 
 if ($metode !== "" && $cari !== "") {
-    $sudahcari = true;
+    $sudahCari = true;
 
     // 3. Sequential Search: cek satu per satu dari awal
     if ($metode === "sequential") {
@@ -37,12 +37,12 @@ if ($metode !== "" && $cari !== "") {
 
             if (strcasecmp($item["nama"], $cari) == 0) {
                 $hasil = $item
-                break;
+                break;  // sudah ketemu, berhenti
             }
         }
     }
 
-    // 4. Binary Search: data harus urut dulu
+    // 4. Binary Search: data HARUS urut dulu
     elseif ($metode === "binary") {
         $data = $barang;
         Usort($data, fn($a, $b) => strcasecmp($a["nama"], $b["nama"]));
@@ -50,7 +50,7 @@ if ($metode !== "" && $cari !== "") {
         $kiri  = 0;
         $kanan = count($data) - 1;
 
-        while ($kiri <=$kanan) {
+        while ($kiri <= $kanan) {
             $langkah++;
 
             $tengah  = indiv($kiri + kanan, 2);
@@ -60,9 +60,9 @@ if ($metode !== "" && $cari !== "") {
                 $hasil = $data[$tengah];
                 break;
             } elseif ($banding < 0) {
-                $kiri = $tengah + 1;
+                $kiri = $tengah + 1;  // cari di sisi kanan
             } else {
-                $kanan = $tengah - 1;
+                $kanan = $tengah - 1; // cari di sisi kiri
             }
         }
     }
