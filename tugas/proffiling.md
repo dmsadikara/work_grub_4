@@ -2,16 +2,16 @@
 ```
 <?php
 $barang = [
-["nama" => "Pensil 2B'],     ["nama" => "Spidol Hitam"], ["nama" => "Penghapus"],
-["nama" => "Kertas HVS A4"], ["nama" => "Kertas Folio"], ["nama" => "Stapler"],
-["nama" => "Selotip"],       ["nama" => "Sticky Notes"], ["nama" => "Gunting"],
-["nama" => "Map Kertas"],
+    ["nama" => "Pensil 2B"],     ["nama" => "Spidol Hitam"], ["nama" =>     "Penghapus"],
+    ["nama" => "Kertas HVS A4"], ["nama" => "Kertas Folio"], ["nama" => "Stapler"],
+    ["nama" => "Selotip"],       ["nama" => "Sticky Notes"], ["nama" => "Gunting"],
+    ["nama" => "Map Kertas"],
 ];
 
 $jalan = isset($_GET["jalan"]); // true setelah tombol ditekan
 $hasil = [];
 
-if ($jalan) [
+if ($jalan) {
     $n = count($barang);
 
     // Bubble Sort
@@ -19,10 +19,10 @@ if ($jalan) [
     for ($i = 0; $i < $n - 1; $i++) {
         for ($j = 0; $j < $n - $i - 1; $j++) {
              $banding++;
-             if (strcasecmp($data[$j]["nama], $data[$j + 1]["nama"]) > 0) {
+             if (strcasecmp($data[$j]["nama"], $data[$j + 1]["nama"]) > 0) {
                 [$data[$j], $data[$] + 1]] = [$data[$j + 1], $data[$j]];
                 $tukar++;
-             }
+            }
         }
     }
     $hasil[] = ["Bubble Sort", $banding, $tukar, (hrtime(true) - $mulai) / 1000];
@@ -33,7 +33,7 @@ if ($jalan) [
         $min = $i;
         for ($j = $i + 1; $j < $n; $j++) {
             $banding++;
-            if (stracasecmp($data[$j]["nama"], $data[$min]["nama"]) < 0) $min = $j;
+            if (strcasecmp($data[$j]["nama"], $data[$min]["nama"]) < 0) $min = $j;
         }
         if ($min != $i) {
             [$data[$i], $data[$min]] = [$data[$min], $data[$i];
@@ -50,7 +50,7 @@ if ($jalan) [
     <title>Profiling Sorting</title>
 </head>
 <body>
-    <h2>Profiling Sorting - Iventaris ATK</h2>
+    <h2>Profiling Sorting - Inventaris ATK</h2>
 
     <form method="GET">
         <button type="submit" name="jalan" value="1">Mulai Profiling</button>
@@ -58,11 +58,11 @@ if ($jalan) [
     <br>
 
     <?php if ($jalan): ?>
-    <table border="1" cellpadding=10 cellpassing="0">
+    <table border="1" cellpadding="10" cellpassing="0">
         <tr>
-            <th>Metode</th<>th>Perbandingan</th><th>Pertukaran</th<>th>Waktu (&micro;s)</th>
+            <th>Metode</th><th>Perbandingan</th><th>Pertukaran</th><th>Waktu (&micro;s)</th>
         </tr>
-        <?php foreach ($hasill as [nama, $b, $t, $w]): ?>
+        <?php foreach ($hasill as [$nama, $b, $t, $w]): ?>
         <tr>
            <td><?= $nama ?></td>
            <td><?= $b ?></td>
