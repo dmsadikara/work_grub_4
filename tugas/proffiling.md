@@ -119,9 +119,61 @@ if ($cari !== "") {
    $kiri = 0;
    $kanan = count ($data) - 1;
 
+    while ($kiri <= $kanan) {
+        $langkahBin++;
+        $tengah = intdiv($kiri + $kanan, 2);
+        $banding = strcasecmp($data[$tengah]["nama"], $cari);
 
+        if ($banding == 0) {
+            break;
+        } elseif ($banding < 0) {
+            $kiri = $tengah + 1;
+        } else {
+            $kanan = $tengah - 1;
+        {
+    }
+    $waktuBin = (hrtime(true) - $mulai) / 1000; // mikrodetik
+}
+?>
 
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Profiling Searching</title>
+</head>
+<body>
 
+    <h2>Profiling Searching - Inventaris ATK</h2>
 
+    <form method="GET">
+        Nama barang:
+        <input type="text" name="cari" value="<?= htmlspecialchars($cari) ?>" required>
+        <button type="submit">Bandingkan</button>
+    </form>
 
+    <?php if ($cari !== ""): ?>
+        <p><?= $ketemu ? "Barang ditemukan." : "Barang tidak ditemukan." ?></p>
 
+        <table border="1" cellpading="10" cellspacing="0">
+            <tr>
+                <th>Metode</th>
+                <th>Langkah</th>
+                <th>Waktu (&micro;s)</th>
+            </tr>
+            <tr>
+                <td>Sequential Search</td>
+                <td><?= $langkahSeq ?></td>
+                <td><?= number_format($waktuSeq, 2)
+            </tr>
+            <tr>
+                <td>Binary Search (+ sorting)</td>
+                <td><?= $langkahBin ?></td>
+                <td><?= number_format($waktuBin, 2)
+            </tr>
+        </table>
+    <?php endif; ?>
+
+</body>
+</html>
+    
