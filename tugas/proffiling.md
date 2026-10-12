@@ -69,7 +69,7 @@ if ($jalan) {
            <td><?= $t ?></td>
            <td><?= number_format($w, 2) ?></td>
         </tr>
-        <?php endforeach>; ?>
+        <?php endforeach; ?>
     </table>
     <?php endif; ?>
  </body>
