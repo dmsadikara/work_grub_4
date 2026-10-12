@@ -20,7 +20,7 @@ if ($jalan) {
         for ($j = 0; $j < $n - $i - 1; $j++) {
              $banding++;
              if (strcasecmp($data[$j]["nama"], $data[$j + 1]["nama"]) > 0) {
-                [$data[$j], $data[$] + 1]] = [$data[$j + 1], $data[$j]];
+                [$data[$j], $data[$j] + 1]] = [$data[$j + 1], $data[$j]];
                 $tukar++;
             }
         }
